@@ -2,6 +2,9 @@
 
 import LoginPage from '../support/pageObjects/LoginPage'
 
+import 'cypress-file-upload';
+
+
 
 const loginPage = new LoginPage()
 
