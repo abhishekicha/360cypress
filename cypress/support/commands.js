@@ -4,6 +4,8 @@ import LoginPage from '../support/pageObjects/LoginPage'
 
 import 'cypress-file-upload';
 
+import '@4tw/cypress-drag-drop'
+
 
 
 const loginPage = new LoginPage()
@@ -27,11 +29,10 @@ const loginPage = new LoginPage()
     cy.visit('https://adminfontend.the360.in/')
 
 
-    loginPage.getEmail().type(email).invoke('attr', 'type').should('contain', 'email')
+    loginPage.getEmail().type(email)
 
-    loginPage.getPassword().type(password).invoke('attr', 'type').should('contain', 'password')
-   
-    loginPage.getSubmitButton().should('be.visible')
+    loginPage.getPassword().type(password)
+
     loginPage.getSubmitButton().click()
 
     
@@ -43,7 +44,7 @@ const loginPage = new LoginPage()
     });
 
 
-    loginPage.getLaunchDevServer().should('contain', 'Launch')
+    loginPage.getLaunchDevServer()
 
     loginPage.getLaunchDevServer().click()
 
