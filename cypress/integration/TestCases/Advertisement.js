@@ -75,7 +75,7 @@ describe('Advertisement fuctionality', function(){
 
     cy.login(this.data.email, this.data.password);
 
-    const p = 'download.png'
+    const p = 'test.jpg'
 
 
     complainsPage.getManageMent().click()
@@ -90,7 +90,7 @@ describe('Advertisement fuctionality', function(){
 
     cy.wait(2000)
 
-    advertisementPage.getAdvertisementTitle().eq(1).type('TestNew')
+    advertisementPage.getAdvertisementTitle().eq(1).type('test102')
 
     cy.wait(2000)
 
@@ -112,6 +112,11 @@ describe('Advertisement fuctionality', function(){
     advertisementPage.getSubmitAdvertisement().click({force: true})
 
     cy.wait(2000)
+
+    advertisementPage.getSubmitAdvertisement().click({force: true})
+
+    cy.wait(2000)
+
 
 
 });
