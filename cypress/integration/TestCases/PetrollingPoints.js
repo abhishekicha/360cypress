@@ -5,84 +5,77 @@ import GuardprofilePage from '../../support/pageObjects/GuardprofilePage';
 import PetrollingPointsPage from '../../support/pageObjects/PetrollingPointsPage';
 
 
-describe('PetrollinPoints fuctionality', function(){
+describe('PetrollinPoints fuctionality', function () {
 
-    const guardPage = new GuardprofilePage();
+  const guardPage = new GuardprofilePage();
 
-    const petrollingPage = new PetrollingPointsPage();
-
-
-    beforeEach(function() {
-
-        cy.fixture('example').then(function(data){
-
-           this.data = data
-        })
-        
-
-      })
+  const petrollingPage = new PetrollingPointsPage();
 
 
+  beforeEach(function () {
 
-    it('PetrollinPoints', function(){
+    cy.fixture('example').then(function (data) {
+
+      this.data = data
 
       cy.login(this.data.email, this.data.password);
 
-      guardPage.getStaff().click()
+    })
 
-      cy.wait(2000)
-    
-      petrollingPage.getPetrollinPointsTab().click()
 
-      petrollingPage.getSearch().type('test',{force: true})
+  })
 
-      cy.wait(2000)
 
-      petrollingPage.getSearch().clear()
 
-      petrollingPage.getAddCheckpoint().click({force: true})
+  it('PetrollinPoints', function () {
 
-      petrollingPage.getCheckPointAddName().type('surajTest4')
-      
-      petrollingPage.getCheckpointArea().type('surajtestarea4')
+    guardPage.getStaff().click()
 
-      petrollingPage.getCheckpointLatitude().type('22.5805359')
+    cy.wait(2000)
 
-      petrollingPage.getCheckpointLongitude().type('88.4351048')
-      
-      petrollingPage.getSubmit().click()
+    petrollingPage.getPetrollinPointsTab().click()
 
-    });
+    petrollingPage.getSearch().type('test', { force: true })
 
-    it('PetrollinPoints With Negative Values', function(){
+    cy.wait(2000)
 
-      cy.login(this.data.email, this.data.password);
+    petrollingPage.getSearch().clear()
 
-      guardPage.getStaff().click()
+    petrollingPage.getAddCheckpoint().click({ force: true })
 
-      cy.wait(2000)
-    
-      petrollingPage.getPetrollinPointsTab().click()
+    petrollingPage.getCheckPointAddName().type('surajTest6')
 
-      petrollingPage.getSearch().type('. . *',{force: true})
+    petrollingPage.getCheckpointArea().type('surajtestarea6')
 
-      cy.wait(2000)
+    petrollingPage.getCheckpointLatitude().type('22.5805359')
 
-      petrollingPage.getSearch().clear()
+    petrollingPage.getCheckpointLongitude().type('88.4351048')
 
-      petrollingPage.getAddCheckpoint().click({force: true})
+    petrollingPage.getSubmit().click()
 
-      petrollingPage.getCheckPointAddName().type('*0*00')
-      
-      petrollingPage.getCheckpointArea().type('..0.')
+    cy.wait(2000)
 
-      petrollingPage.getCheckpointLatitude().type('..0..')
+    //PetrollinPoints With Negative Values
 
-      petrollingPage.getCheckpointLongitude().type('...0y.')
-      
-      petrollingPage.getSubmit().click()
+    petrollingPage.getSearch().type('. . *', { force: true })
 
-    });
+    cy.wait(2000)
+
+    petrollingPage.getSearch().clear()
+
+    petrollingPage.getAddCheckpoint().click({ force: true })
+
+    petrollingPage.getCheckPointAddName().type('*0*00')
+
+    petrollingPage.getCheckpointArea().type('..0.')
+
+    petrollingPage.getCheckpointLatitude().type('..0..')
+
+    petrollingPage.getCheckpointLongitude().type('...0y.')
+
+    petrollingPage.getSubmit().click()
+
+  });
 
 
 });

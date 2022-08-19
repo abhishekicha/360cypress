@@ -7,85 +7,76 @@ import ParkingPage from '../../support/pageObjects/ParkingPage';
 
 
 
-describe('Parking Space fuctionality', function(){
+describe('Parking Space fuctionality', function () {
 
     const flatOwnersPage = new FlatOwnersPage();
 
     const parkingPage = new ParkingPage();
 
 
-    
-    beforeEach(function() {
 
-        cy.fixture('example').then(function(data){
+    beforeEach(function () {
 
-           this.data = data
+        cy.fixture('example').then(function (data) {
+
+            this.data = data
+
+            cy.login(this.data.email, this.data.password);
+
         })
-        
 
-      })
-// Add Parking Space Module
-      it('Add Parking Space', function(){
 
-        cy.login(this.data.email, this.data.password);
-  
-        flatOwnersPage.getProperty().click({force: true})
-  
+    })
+    it('Parking Space', function () {
+
+        // Add Parking Space Module
+
+        flatOwnersPage.getProperty().click({ force: true })
+
         cy.wait(2000);
 
-        parkingPage.getParking().click({force: true})
+        parkingPage.getParking().click({ force: true })
 
         cy.wait(2000)
 
-        parkingPage.getAddParkingSpace().click({force: true})
+        parkingPage.getAddParkingSpace().click({ force: true })
 
         cy.wait(2000)
 
-        parkingPage.getSelectUnits().click({force: true})
+        parkingPage.getSelectUnits().click({ force: true })
 
         cy.wait(2000)
 
-        parkingPage.getSelectUnitsName().each(($e1, index, $list) =>{
-       
-            if($e1.text().trim(' ') ==='Aspen-1A'){
-    
-                cy.wrap($e1).click({force: true})
+        parkingPage.getSelectUnitsName().each(($e1, index, $list) => {
+
+            if ($e1.text().trim(' ') === 'Aspen-1A') {
+
+                cy.wrap($e1).click({ force: true })
             }
         })
 
         cy.wait(2000)
 
-        parkingPage.getSelectAddSpace().click({force: true})
+        parkingPage.getSelectAddSpace().click({ force: true })
 
         cy.wait(2000)
 
-        parkingPage.getParkingSpaceName().type('Parking03', {force: true})
+        parkingPage.getParkingSpaceName().type('Parking03', { force: true })
 
         cy.wait(2000)
 
-        parkingPage.getSaveButton().click({force: true})
+        parkingPage.getSaveButton().click({ force: true })
 
         cy.wait(2000)
 
-    });
+        //Parking Space Filter Button
 
-      it('Parking Space Filter Button', function(){
 
-        cy.login(this.data.email, this.data.password);
-  
-        flatOwnersPage.getProperty().click({force: true})
-  
-        cy.wait(2000);
-
-        parkingPage.getParking().click({force: true})
+        parkingPage.getFilter().click({ force: true })
 
         cy.wait(2000)
 
-        parkingPage.getFilter().click({force: true})
-
-        cy.wait(2000)
-
-        parkingPage.getSelectFilterType().click({force: true})
+        parkingPage.getSelectFilterType().click({ force: true })
 
         cy.wait(2000)
 
@@ -98,16 +89,16 @@ describe('Parking Space fuctionality', function(){
 
                 parkingPage.getSelectFlat().eq(1).click()
 
-                parkingPage.getSelectFlatName().each(($e1, index, $list) =>{
-       
-                    if($e1.text().trim(' ') ==='Aspen-1A'){
-            
-                        cy.wrap($e1).click({force: true})
+                parkingPage.getSelectFlatName().each(($e1, index, $list) => {
+
+                    if ($e1.text().trim(' ') === 'Aspen-1A') {
+
+                        cy.wrap($e1).click({ force: true })
 
                     }
 
                 })
-                parkingPage.getFilterByName().click({force: true})
+                parkingPage.getFilterByName().click({ force: true })
 
                 cy.wait(2000)
 
@@ -115,68 +106,23 @@ describe('Parking Space fuctionality', function(){
 
                 cy.wait(2000)
 
-            }else if(index === 1) {
+            } else if (index === 1) {
 
-                cy.wrap($ele).click({force: true})
+                cy.wrap($ele).click({ force: true })
 
                 parkingPage.getSelectOwner().eq(1).click()
 
-                parkingPage.getSelectOwnerName().each(($e1, index, $list) =>{
-       
-                    if($e1.text().trim(' ') ==='Soumya Kanti Jana'){
-            
-                        cy.wrap($e1).click({force: true})
+                parkingPage.getSelectOwnerName().each(($e1, index, $list) => {
+
+                    if ($e1.text().trim(' ') === 'Soumya Kanti Jana') {
+
+                        cy.wrap($e1).click({ force: true })
 
                     }
 
                 })
 
-                parkingPage.getFilterByName().click({force: true})
-
-                cy.wait(2000)
-
-                parkingPage.getReset().click()
-
-                cy.wait(2000)
-
-              
-            } 
-            else if(index === 2) {
-
-                cy.wrap($ele).click({force: true})
-
-                parkingPage.getSelectParkingNo().eq(1).click()
-
-                parkingPage.getSelectParking().each(($e1, index, $list) =>{
-       
-                    if($e1.text().trim(' ') ==='AS-2B/1'){
-            
-                        cy.wrap($e1).click({force: true})
-
-                    }
-
-                })
-
-                parkingPage.getFilterByName().click({force: true})
-
-                cy.wait(2000)
-
-                parkingPage.getReset().click()
-
-                cy.wait(2000)
-
-              
-            }else{
-
-                cy.wrap($ele).click({force: true})
-
-                cy.wait(2000)
-
-                parkingPage.getVehicleSearch().type('WB2H1998', {force: true})
-
-                cy.wait(2000)
-
-                parkingPage.getFilterByName().click({force: true})
+                parkingPage.getFilterByName().click({ force: true })
 
                 cy.wait(2000)
 
@@ -186,10 +132,58 @@ describe('Parking Space fuctionality', function(){
 
 
             }
+            else if (index === 2) {
+
+                cy.wrap($ele).click({ force: true })
+
+                parkingPage.getSelectParkingNo().eq(1).click()
+
+                parkingPage.getSelectParking().each(($e1, index, $list) => {
+
+                    if ($e1.text().trim(' ') === 'AS-2B/1') {
+
+                        cy.wrap($e1).click({ force: true })
+
+                    }
+
+                })
+
+                parkingPage.getFilterByName().click({ force: true })
+
+                cy.wait(2000)
+
+                parkingPage.getReset().click()
+
+                cy.wait(2000)
+
+
+            } else {
+
+                cy.wrap($ele).click({ force: true })
+
+                cy.wait(2000)
+
+                parkingPage.getVehicleSearch().type('WB2H1998', { force: true })
+
+                cy.wait(2000)
+
+                parkingPage.getFilterByName().click({ force: true })
+
+                cy.wait(2000)
+
+                parkingPage.getReset().click()
+
+                cy.wait(2000)
+
+                parkingPage.getFilter().click({ force: true })
+
+
+            }
 
         })
 
     });
+
 
 });
 

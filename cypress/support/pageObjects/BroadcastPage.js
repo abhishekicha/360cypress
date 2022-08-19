@@ -57,22 +57,22 @@ class BroadcastPage{
 
     getCreateBroadcast(){
 
-        return cy.get('.addButton')
+        return cy.get('.text-end > .addButton')
     }
 
     getOwners(){
 
-        return cy.get('#__BVID__164_BV_option_2')
+        return cy.get('input[value="OWNER"]')
     }
 
     getPriority(){
 
-        return cy.get('#__BVID__171_BV_option_0')
+        return cy.get('input[value="HIGH"]')
     }
 
     getReplyTo(){
 
-        return cy.get('#__BVID__175 > :nth-child(1) > .v-input > .v-input__control > .v-input__slot')
+        return cy.contains('Reply To')
     }
 
     getReplyToName(){
@@ -82,7 +82,7 @@ class BroadcastPage{
 
     getSubject(){
 
-        return cy.get('#__BVID__181 > :nth-child(1) > .v-input input')
+        return cy.get('.v-text-field__slot input')
     }
 
     getImage(){
@@ -102,22 +102,17 @@ class BroadcastPage{
 
     getNotificationBroadcast(){
 
-        return cy.get('#__BVID__190___BV_tab_button__')
+        return cy.contains('Notification Broadcast')
     }
 
     getRecipientType(){
 
-        return cy.get('#__BVID__194_BV_option_2')
+        return cy.get('input[value="ALL"]')
     }
 
     getPriorityNotification(){
 
         return cy.get('input[type="radio"]')
-    }
-
-    getSubjectNotification(){
-
-        return cy.get('#__BVID__205 > :nth-child(1) > .v-input > .v-input__control > .v-input__slot input')
     }
 
     getNotificationBody(){

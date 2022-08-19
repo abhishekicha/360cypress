@@ -5,145 +5,136 @@ import AssetsPage from '../../support/pageObjects/AssetsPage';
 import MeetingsPage from '../../support/pageObjects/MeetingsPage';
 
 
-describe('Meetings fuctionality', function(){
+describe('Meetings fuctionality', function () {
 
-    const assetsPage = new AssetsPage();
+  const assetsPage = new AssetsPage();
 
-    const meetingPage = new MeetingsPage()
+  const meetingPage = new MeetingsPage()
 
-    
-    beforeEach(function() {
 
-        cy.fixture('example').then(function(data){
+  beforeEach(function () {
 
-           this.data = data
-        })
-        
+    cy.fixture('example').then(function (data) {
 
-      })
+      this.data = data
 
-      it('Add Meetings', function(){
+      cy.login(this.data.email, this.data.password);
 
-        cy.login(this.data.email, this.data.password);
-  
-        assetsPage.getManagement().click()
+    })
 
-        cy.wait(2000);
 
-        meetingPage.getMeetingsTab().click()
+  })
 
-        cy.wait(2000);
+  it('Meetings', function () {
 
-        meetingPage.getSearch().type('test', {force: true})
+    //add meetings
 
-        cy.wait(2000);
+    assetsPage.getManagement().click()
 
-        meetingPage.getVerifySearchData().should('contain', 'Test')
+    cy.wait(2000);
 
-        cy.wait(2000);
+    meetingPage.getMeetingsTab().click()
 
-        meetingPage.getSearch().clear()
+    cy.wait(2000);
 
-        cy.wait(2000);
+    meetingPage.getSearch().type('test', { force: true })
 
-        meetingPage.getAddMeetingButton().click({force: true})
+    cy.wait(2000);
 
-        //need to rework when manual test cases are ready
+    meetingPage.getVerifySearchData().should('contain', 'Test')
 
-        cy.wait(2000);
+    cy.wait(2000);
 
-        meetingPage.getTopic().type('Test', {force: true})
+    meetingPage.getSearch().clear()
 
-        cy.wait(2000);
+    cy.wait(2000);
 
-        meetingPage.getDate().type('2022-07-20', { force: true })
+    meetingPage.getAddMeetingButton().click({ force: true })
 
-        cy.wait(2000);
+    //need to rework when manual test cases are ready
 
-        meetingPage.getTime().type('10:40:00', {force: true})
+    cy.wait(2000);
 
-        cy.wait(2000);
+    meetingPage.getTopic().type('Test', { force: true })
 
-        meetingPage.getDuration().type('60 Minutes', {force: true})
+    cy.wait(2000);
 
-        cy.wait(2000);
+    meetingPage.getDate().type('2022-07-20', { force: true })
 
-        meetingPage.getVenue().type('test venue', {force: true})
+    cy.wait(2000);
 
-        cy.wait(2000);
+    meetingPage.getTime().type('10:40:00', { force: true })
 
-        meetingPage.getNotes().type('test', {force: true})
+    cy.wait(2000);
 
-        cy.wait(2000);
+    meetingPage.getDuration().type('60 Minutes', { force: true })
 
-        meetingPage.getAgenda().type('test', {force: true})
+    cy.wait(2000);
 
-        cy.wait(2000);
+    meetingPage.getVenue().type('test venue', { force: true })
 
-        meetingPage.getSubmit().click({force: true})
+    cy.wait(2000);
 
-        cy.wait(2000);
+    meetingPage.getNotes().type('test', { force: true })
 
-  
-    });
+    cy.wait(2000);
 
-    it('Add Meetings Negative Values', function(){
+    meetingPage.getAgenda().type('test', { force: true })
 
-        cy.login(this.data.email, this.data.password);
-  
-        assetsPage.getManagement().click()
+    cy.wait(2000);
 
-        cy.wait(2000);
+    meetingPage.getSubmit().click({ force: true })
 
-        meetingPage.getMeetingsTab().click()
+    cy.wait(2000);
 
-        cy.wait(2000);
+    //Add Meetings Negative Values
 
-        meetingPage.getSearch().type('../..', {force: true})
 
-        cy.wait(2000);
+    meetingPage.getSearch().type('../..', { force: true })
 
-        meetingPage.getSearch().clear()
+    cy.wait(2000);
 
-        cy.wait(2000);
+    meetingPage.getSearch().clear()
 
-        meetingPage.getAddMeetingButton().click({force: true})
+    cy.wait(2000);
 
-        cy.wait(2000);
+    meetingPage.getAddMeetingButton().click({ force: true })
 
-        meetingPage.getTopic().type('..0.//', {force: true})
+    cy.wait(2000);
 
-        cy.wait(2000);
+    meetingPage.getTopic().type('..0.//', { force: true })
 
-        meetingPage.getDate().type('2029-07-20', { force: true })
+    cy.wait(2000);
 
-        cy.wait(2000);
+    meetingPage.getDate().type('2029-07-20', { force: true })
 
-        meetingPage.getTime().type('10:40:00', {force: true})
+    cy.wait(2000);
 
-        cy.wait(2000);
+    meetingPage.getTime().type('10:40:00', { force: true })
 
-        meetingPage.getDuration().type('  ', {force: true})
+    cy.wait(2000);
 
-        cy.wait(2000);
+    meetingPage.getDuration().type('  ', { force: true })
 
-        meetingPage.getVenue().type('../.. ', {force: true})
+    cy.wait(2000);
 
-        cy.wait(2000);
+    meetingPage.getVenue().type('../.. ', { force: true })
 
-        meetingPage.getNotes().type('.....', {force: true})
+    cy.wait(2000);
 
-        cy.wait(2000);
+    meetingPage.getNotes().type('.....', { force: true })
 
-        meetingPage.getAgenda().type('../', {force: true})
+    cy.wait(2000);
 
-        cy.wait(2000);
+    meetingPage.getAgenda().type('../', { force: true })
 
-        meetingPage.getSubmit().click({force: true})
+    cy.wait(2000);
 
-        cy.wait(2000);
+    meetingPage.getSubmit().click({ force: true })
 
-  
-    });
+    cy.wait(2000);
+
+
+  });
 
 });

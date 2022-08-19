@@ -52,25 +52,25 @@ class ComplainsPage{
 
     getAddComplain(){
 
-        return cy.get('.addButton')
+        return cy.get('.text-end > .addButton')
 
     }
 
     getAddComplaintCategory(){
 
-        return cy.get('#__BVID__176 > :nth-child(1) > .v-input > .v-input__control > .v-input__slot')
+        return cy.contains('Complain Category')
 
     }
 
    getSelectUnit(){
 
-    return cy.get('#__BVID__182 > :nth-child(1) > .v-input > .v-input__control > .v-input__slot')
+    return cy.contains('Select Unit')
 
    }
 
    getComplainTitle(){
 
-    return cy.get('#__BVID__188 > :nth-child(1) > .v-input input')
+    return cy.get('.v-text-field__slot input')
    }
 
    getComplainDescription(){
@@ -88,7 +88,7 @@ class ComplainsPage{
 
    getSubmit(){
 
-    return cy.get('.text-center > .btn')
+    return cy.contains('Submit')
 
    }
 }

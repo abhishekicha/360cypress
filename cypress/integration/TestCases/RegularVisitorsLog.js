@@ -14,14 +14,17 @@ describe('Regular visitors Log fuctionality', function () {
         cy.fixture('example').then(function (data) {
 
             this.data = data
+
+            cy.login(this.data.email, this.data.password);
+
         })
 
 
     })
 
-    it('Regular Visitors Log Filter', function () {
+    it('Regular Visitors Log ', function () {
 
-        cy.login(this.data.email, this.data.password);
+        //Regular Visitors Log Filter
 
         regularVisitorsLogPage.getLogs().click()
 
@@ -79,18 +82,10 @@ describe('Regular visitors Log fuctionality', function () {
 
         regularVisitorsLogPage.getFilter().click({ force: true })
 
+        cy.wait(2000)
 
-    });
+        //Regular Visitors Log Filter With Negative Values
 
-    it('Regular Visitors Log Filter With Negative Values', function () {
-
-        cy.login(this.data.email, this.data.password);
-
-        regularVisitorsLogPage.getLogs().click()
-
-        regularVisitorsLogPage.getRegularVisitorsLogs().click()
-
-        cy.wait(2000);
 
         regularVisitorsLogPage.getFilter().click()
 
@@ -120,8 +115,8 @@ describe('Regular visitors Log fuctionality', function () {
 
         cy.wait(2000)
 
-       
 
     });
+
 
 });

@@ -1,4 +1,4 @@
-class VehicleLogPage{
+class VehicleLogPage {
 
     getVehicleLogs() {
 
@@ -47,7 +47,7 @@ class VehicleLogPage{
         return cy.get('.resetButton');
     }
 
-    
+
 }
 
 export default VehicleLogPage;

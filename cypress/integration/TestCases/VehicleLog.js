@@ -5,7 +5,7 @@ import RegularVisitorsLogPage from '../../support/pageObjects/RegularVisitorsLog
 import VehicleLogPage from '../../support/pageObjects/VehicleLogPage';
 
 
-describe('Vehicle Log fuctionality', function(){
+describe('Vehicle Log fuctionality', function () {
 
 
     const regularVisitorsLogPage = new RegularVisitorsLogPage();
@@ -13,23 +13,24 @@ describe('Vehicle Log fuctionality', function(){
     const vehicleLogPage = new VehicleLogPage();
 
 
-    
-    beforeEach(function() {
 
-        cy.fixture('example').then(function(data){
+    beforeEach(function () {
 
-           this.data = data
+        cy.fixture('example').then(function (data) {
+
+            this.data = data
+
+            cy.login(this.data.email, this.data.password);
+
         })
-        
 
-      })
 
-      it('Vehicle Logs', function(){
+    })
 
-        cy.login(this.data.email, this.data.password);
-  
+    it('Vehicle Logs', function () {
+
         regularVisitorsLogPage.getLogs().click()
-  
+
         cy.wait(2000);
 
         vehicleLogPage.getVehicleLogs().click()
@@ -56,11 +57,11 @@ describe('Vehicle Log fuctionality', function(){
 
         cy.wait(2000)
 
-        vehicleLogPage.getFilterSubmit().click({force: true});
+        vehicleLogPage.getFilterSubmit().click({ force: true });
 
         cy.wait(2000)
 
-        vehicleLogPage.getSearch().type('ola',{force: true});
+        vehicleLogPage.getSearch().type('ola', { force: true });
 
         cy.wait(2000)
 
@@ -68,36 +69,21 @@ describe('Vehicle Log fuctionality', function(){
 
         cy.wait(2000)
 
-        vehicleLogPage.getGenerateReport().eq(1).click({force: true});
-       
-        cy.wait(2000)
-
-        vehicleLogPage.getFilterSubmit().click({force: true});
+        vehicleLogPage.getGenerateReport().eq(1).click({ force: true });
 
         cy.wait(2000)
 
-        vehicleLogPage.getReset().click({force: true})
-     
-        cy.wait(2000)
-
-
-    });
-
-    it('Vehicle Logs With Negative Values', function(){
-
-        cy.login(this.data.email, this.data.password);
-  
-        regularVisitorsLogPage.getLogs().click()
-  
-        cy.wait(2000);
-
-        vehicleLogPage.getVehicleLogs().click()
+        vehicleLogPage.getFilterSubmit().click({ force: true });
 
         cy.wait(2000)
 
-        vehicleLogPage.getFilter().click();
+        vehicleLogPage.getReset().click({ force: true })
 
         cy.wait(2000)
+
+
+        //Vehicle Logs With Negative Values
+
 
         vehicleLogPage.getDate().each(($ele, index) => {
             if (index === 0) {
@@ -121,25 +107,22 @@ describe('Vehicle Log fuctionality', function(){
 
         cy.wait(2000)
 
-        vehicleLogPage.getSearch().type('....',{force: true});
-       
+        vehicleLogPage.getSearch().type('....', { force: true });
+
         cy.wait(2000)
 
         vehicleLogPage.getValidateResultText().should('have.text', 'There are no records to show')
 
         cy.wait(2000)
 
-        vehicleLogPage.getGenerateReport().eq(1).click({force: true})
-        
-        cy.wait(2000)
-
-        vehicleLogPage.getFilterSubmit().click({force: true});
+        vehicleLogPage.getGenerateReport().eq(1).click({ force: true })
 
         cy.wait(2000)
 
-        vehicleLogPage.getReset().click({force: true})
+        vehicleLogPage.getFilterSubmit().click({ force: true });
 
         cy.wait(2000)
+
 
     });
 
