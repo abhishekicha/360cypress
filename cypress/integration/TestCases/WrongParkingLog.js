@@ -52,8 +52,10 @@ describe('Wrong Parking Logs fuctionality', function(){
         cy.log(dayjs().format('MM/DD/YYYY')) 
         
        wrongParkingLogPage.getDate().invoke('val').then((text) => {
+        
         expect(dayjs().format('YYYY-MM-DD')).to.equal(text);
-    });
+        
+      });
        
         wrongParkingLogPage.getDate().each(($ele, index) => {
             if (index === 0) {
