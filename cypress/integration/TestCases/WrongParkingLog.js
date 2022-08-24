@@ -44,6 +44,8 @@ describe('Wrong Parking Logs fuctionality', function(){
 
         cy.wait(2000);
 
+       //present day's date should appear after filter button click
+
         const dayjs = require('dayjs')
 
         //In test
@@ -121,8 +123,8 @@ describe('Wrong Parking Logs fuctionality', function(){
 
           cy.wait(2000)
 
-          //Todays date should appear after reset
-          
+          //present day's date should appear after reset
+
           wrongParkingLogPage.getDate().invoke('val').then((text) => {
 
             expect(dayjs().format('YYYY-MM-DD')).to.equal(text);

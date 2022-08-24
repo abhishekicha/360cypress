@@ -41,10 +41,6 @@ class WrongParkingLogPage{
     }
 
 
-    getVerifyDate(){
-
-        return cy.contains('08/24/2022')
-    }
 }
 
 export default WrongParkingLogPage;
