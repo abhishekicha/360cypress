@@ -26,9 +26,9 @@ describe('Wrong Parking Logs fuctionality', function(){
 
       })
 
-      it('Wrong Parking Logs', function(){
 
-        //search functionality
+
+      it('Wrong Parking Logs', function(){
   
         regularVisitorsLogPage.getLogs().click()
   
@@ -38,7 +38,43 @@ describe('Wrong Parking Logs fuctionality', function(){
 
         cy.wait(2000);
 
-        wrongParkingLogPage.getSearch().type('7890', {force: true})
+        //filter functionality
+
+        wrongParkingLogPage.getFilter().click()
+
+        cy.wait(2000);
+
+        const dayjs = require('dayjs')
+
+        //In test
+        cy.log(dayjs().format('MM/DD/YYYY')) 
+        
+       wrongParkingLogPage.getDate().invoke('val').then((text) => {
+        expect(dayjs().format('YYYY-MM-DD')).to.equal(text);
+    });
+       
+        wrongParkingLogPage.getDate().each(($ele, index) => {
+            if (index === 0) {
+      
+              cy.wrap($ele).click().type('2022-08-10', { force: true })
+      
+            } else {
+      
+              cy.wrap($ele).click().type('2022-08-23', { force: true })
+      
+            }
+      
+          })
+      
+
+          wrongParkingLogPage.getFilterSubmit().click({force: true})
+
+          cy.wait(2000)
+
+
+      //search functionality
+
+       wrongParkingLogPage.getSearch().type('7890', {force: true})
 
         cy.wait(2000);
 
@@ -74,31 +110,10 @@ describe('Wrong Parking Logs fuctionality', function(){
 
         cy.wait(2000);
 
-        //filter functionality
 
-        wrongParkingLogPage.getFilter().click()
+        // Filter Reset
 
-        cy.wait(2000);
-
-        wrongParkingLogPage.getDate().each(($ele, index) => {
-            if (index === 0) {
-      
-              cy.wrap($ele).click().type('2022-08-10', { force: true })
-      
-            } else {
-      
-              cy.wrap($ele).click().type('2022-08-23', { force: true })
-      
-            }
-      
-          })
-      
-
-          wrongParkingLogPage.getFilterSubmit().click({force: true})
-
-          cy.wait(2000)
-
-          wrongParkingLogPage.getFilter().click()
+         wrongParkingLogPage.getFilter().click()
 
           cy.wait(2000)
 
@@ -106,7 +121,12 @@ describe('Wrong Parking Logs fuctionality', function(){
 
           cy.wait(2000)
 
+          //Todays date should appear after reset
+          
+          wrongParkingLogPage.getDate().invoke('val').then((text) => {
 
+            expect(dayjs().format('YYYY-MM-DD')).to.equal(text);
+        });
     });
 
 });
