@@ -8,7 +8,7 @@ class BroadcastPage{
 
     getSearch(){
 
-        return cy.get('#__BVID__126 input')
+        return cy.get('input[type="text"]')
 
     }
 
